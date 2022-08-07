@@ -17,5 +17,7 @@ jobs:
           justlogin: true
       - name: Docker login
         run: heroku container:login
-      - name: Docker tag keycloak image
-        run: docker image ls
+      - name: Docker push image
+        run: heroku container:push web
+      - name: Release App
+        run: heroku container:release web

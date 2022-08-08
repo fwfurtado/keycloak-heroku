@@ -14,10 +14,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
-          justlogin: true
-      - name: Docker login
-        run: heroku container:login
-      - name: Docker push image
-        run: heroku container:push web
-      - name: Release App
-        run: heroku container:release web
+          usedocker: true
+          healthcheck: "https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/health"
